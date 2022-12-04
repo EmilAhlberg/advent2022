@@ -9,13 +9,12 @@ import (
 )
 
 func Test_SolveSample(t *testing.T) {
-	p1, p2 := Solve(helpers.LoadFile("04_sample"))
-	assert.Equal(t, p1, 2)
-	assert.Equal(t, p2, 4)
+	ans := Solve(helpers.LoadFile("00_sample"))
+	assert.Equal(t, ans, 0)
 }
 
 func Test_SolveReal(t *testing.T) {
-	p1, p2 := Solve(helpers.LoadFile("04"))
-	assert.Equal(t, p1, 498)
-	assert.Equal(t, p2, 859)
+	ans := Solve(helpers.LoadFile("00"))
+	assert.Equal(t, ans, 0)
+
 }

@@ -9,7 +9,8 @@ import (
 const verbose = false
 
 func LoadFile(name string) []string {
-	file, err := os.Open(fmt.Sprintf("../input/%s.txt", name))
+	fmt.Println("reading;", fmt.Sprintf("../../input/%s.txt", name))
+	file, err := os.Open(fmt.Sprintf("../../input/%s.txt", name))
 	defer file.Close()
 
 	var rows []string

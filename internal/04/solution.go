@@ -17,7 +17,7 @@ func Solve(rows []string) (part1, part2 int) {
 			part1++
 		}
 		if !(lb1 > ub2 || ub1 < lb2) {
-			part2 += 1
+			part2++
 		}
 	}
 	return part1, part2

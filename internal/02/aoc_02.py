@@ -1,0 +1,1 @@
+print(sum([ord(row[2])-ord('A') - 22 +((ord(row[2])-ord(row[0])+2) % 3)*3 for row in open('input/aoc_02.txt', 'r')]))

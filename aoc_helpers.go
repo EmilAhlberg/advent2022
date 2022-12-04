@@ -1,4 +1,4 @@
-package aoc
+package helpers
 
 import (
 	"bufio"

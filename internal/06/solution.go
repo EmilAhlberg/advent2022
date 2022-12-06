@@ -1,9 +1,9 @@
 package main
 
 func Solve(rows string, windowSize int) int {
-	currentWindow, lastSeenAt := 0, make(map[byte]int)
-	for i := 0; i < len(rows); i++ {
-		ch, currentWindow := rows[i], currentWindow+1
+	currentWindow, lastSeenAt := 0, make(map[rune]int)
+	for i, ch := range rows {
+		currentWindow++
 		if idx, wasSeen := lastSeenAt[ch]; wasSeen && i-idx < currentWindow {
 			currentWindow = i - idx
 		}

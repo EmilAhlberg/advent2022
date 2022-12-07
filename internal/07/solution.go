@@ -1,7 +1,6 @@
 package main
 
 import (
-	"sort"
 	"strconv"
 	"strings"
 )
@@ -37,7 +36,7 @@ func Solve(rows []string) (total, deleteSize int) {
 		} else if commandline[0] != "dir" {
 			cheat := strings.Split(currentPath, "/")
 			for i := 0; i < len(cheat); i++ {
-				size, _ := strconv.Atoi(strings.Split(row, " ")[0])
+				size, _ := strconv.Atoi(commandline[0])
 				paths := strings.Join(cheat[:i+1], "/")
 				directories[paths] += size
 			}
@@ -54,30 +53,16 @@ func Solve(rows []string) (total, deleteSize int) {
 
 	directories["/"] += rootFolderTrick
 
-	var ss []kv
-	for k, v := range directories {
-		ss = append(ss, kv{k, v})
-	}
+	var _ []kv
 
-	sort.Slice(ss, func(i, j int) bool {
-		return ss[i].Value > ss[j].Value
-	})
-
-	total = 0
-	for _, kv := range ss {
-		if kv.Value <= 100000 {
-			total += kv.Value
-		}
-	}
-
+	total, deleteSize = 0, 999999999990
 	p2Target := 30000000 - (70000000 - directories["/"])
-	deleteSize = 999999999990
-
-	for _, kv := range ss {
-		if kv.Value < p2Target {
-			continue
-		} else if kv.Value-p2Target < deleteSize {
-			deleteSize = kv.Value
+	for _, val := range directories {
+		if val <= 100000 {
+			total += val
+		}
+		if val >= p2Target && val-p2Target < deleteSize {
+			deleteSize = val
 		}
 	}
 

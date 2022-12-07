@@ -18,5 +18,4 @@ func Test_SolveReal(t *testing.T) {
 	p1, p2 := Solve(helpers.LoadFile("07"))
 	assert.Equal(t, 1543140, p1)
 	assert.Equal(t, 1117448, p2)
-
 }

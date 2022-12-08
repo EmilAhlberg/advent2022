@@ -41,7 +41,6 @@ func Solve(rows []string) (p1, p2 int) {
 				break
 			}
 		}
-
 		for ii := I + 1; ii < m; ii++ {
 			d2 += 1
 			if M[J][ii] >= M[J][I] {
@@ -54,7 +53,6 @@ func Solve(rows []string) (p1, p2 int) {
 				break
 			}
 		}
-
 		for jj := J + 1; jj < n; jj++ {
 			d4 += 1
 			if M[jj][I] >= M[J][I] {
@@ -94,11 +92,4 @@ func Solve(rows []string) (p1, p2 int) {
 	}
 
 	return p1, p2
-}
-
-func myMax(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }

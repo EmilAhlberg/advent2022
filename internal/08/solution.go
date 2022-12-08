@@ -35,46 +35,34 @@ func Solve(rows []string) (p1, p2 int) {
 
 	var helperP2 func(int, int) int
 	helperP2 = func(I, J int) int {
-		fmt.Println(I, J, m, n)
-		if I == 0 || J == 0 || I == m-1 || J == n-1 {
-			return 0
-		}
-
-		d1 := 1
+		d1, d2, d3, d4 := 0, 0, 0, 0
 		for ii := I - 1; ii > 0; ii-- {
-			fmt.Println(M[J][ii], M[J][ii+1])
+			d1 += 1
 			if M[J][ii] > M[J][ii+1] {
 				break
 			}
-			d1 += 1
 		}
 
-		d2 := 1
 		for ii := I + 1; ii < m; ii++ {
+			d2 += 1
 			if M[J][ii] > M[J][ii-1] {
 				break
 			}
-			d2 += 1
 
 		}
-
-		d3 := 1
 		for jj := J - 1; jj > 0; jj-- {
+			d3 += 1
 			if M[jj][I] > M[jj+1][I] {
 				break
 			}
-			d3 += 1
 		}
 
-		d4 := 1
 		for jj := J + 1; jj < n; jj++ {
+			d4 += 1
 			if M[jj][I] > M[jj-1][I] {
 				break
 			}
-			d4 += 1
 		}
-
-		fmt.Println(d1, d2, d3, d4)
 		return d1 * d2 * d3 * d4
 	}
 	fmt.Println(M[3][2])

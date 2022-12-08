@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -36,38 +35,36 @@ func Solve(rows []string) (p1, p2 int) {
 	var helperP2 func(int, int) int
 	helperP2 = func(I, J int) int {
 		d1, d2, d3, d4 := 0, 0, 0, 0
-		for ii := I - 1; ii > 0; ii-- {
+		for ii := I - 1; ii >= 0; ii-- {
 			d1 += 1
-			if M[J][ii] > M[J][ii+1] {
+			if M[J][ii] >= M[J][I] {
 				break
 			}
 		}
 
 		for ii := I + 1; ii < m; ii++ {
 			d2 += 1
-			if M[J][ii] > M[J][ii-1] {
+			if M[J][ii] >= M[J][I] {
 				break
 			}
-
 		}
-		for jj := J - 1; jj > 0; jj-- {
+		for jj := J - 1; jj >= 0; jj-- {
 			d3 += 1
-			if M[jj][I] > M[jj+1][I] {
+			if M[jj][I] >= M[J][I] {
 				break
 			}
 		}
 
 		for jj := J + 1; jj < n; jj++ {
 			d4 += 1
-			if M[jj][I] > M[jj-1][I] {
+			if M[jj][I] >= M[J][I] {
 				break
 			}
 		}
+
 		return d1 * d2 * d3 * d4
 	}
-	fmt.Println(M[3][2])
-	fmt.Println(M[3])
-	helperP2(3, 2)
+
 	for i := 0; i < m; i++ {
 		max := -1337
 		for j := 0; j < n; j++ {
